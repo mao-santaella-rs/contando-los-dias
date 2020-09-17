@@ -5,9 +5,6 @@
       :prop-number="propNumber"
       :loading="loading"
     )
-
-    .maoma
-      h1 maoma
 </template>
 
 <script>
