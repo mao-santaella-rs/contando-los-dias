@@ -55,7 +55,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.loading = true
-    }, 500)
+    }, 1500)
   },
   computed: {
     selectedColors() {
