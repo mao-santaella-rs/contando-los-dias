@@ -5,11 +5,15 @@
       :prop-number="propNumber"
       :loading="loading"
     )
+    Footer
+
 </template>
 
 <script>
+import Footer from './components/footer'
 export default {
   name: 'App',
+  components: { Footer },
   data: () => ({
     loading: false,
     propNumber: 0,
@@ -75,11 +79,20 @@ export default {
 @import './assets/normalize.css'
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap')
 
-html, body, #app
-  width: 100%
-  height: 100%
+html
+  min-height: 100%
 
-h1, h2, h3, h4, h5, .days
+html, body
+  display: flex
+  flex-grow: 1
+
+#app
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+
+
+*
   font-family: 'Lobster', cursive
   color: white
   line-height: 1em
@@ -87,7 +100,7 @@ h1, h2, h3, h4, h5, .days
   font-weight: 500
 
 .contador
-  min-height: 100%
+  flex-grow: 1
   display: flex
   justify-content: center
   align-items: center

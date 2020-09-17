@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .shield
   filter: drop-shadow(5px 10px 5px rgba(0,0,0,.2))
 
