@@ -56,12 +56,11 @@ export default {
     minutes: 0,
     seconds: 0,
     phrases: [
-      'Para por fin verte alos ojos',
+      'Para por fin verte a los ojos',
       'Para ver el exacto color de tus ojos',
       'Para conocer tu aroma',
       'Para sentir tus labios',
-      'Para sentir tu piel',
-      ''
+      'Para sentir tu piel'
     ]
   }),
   created() {
@@ -106,6 +105,8 @@ export default {
       font-size: 14em
 
 @media screen and (max-width: 450px)
+  .shield
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,.2))
   .days
     h1
       font-size: 12em
