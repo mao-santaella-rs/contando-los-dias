@@ -1,5 +1,10 @@
 <template lang="pug">
-  #app(:style="{'background-image': `radial-gradient(${selectedColors.start}, ${selectedColors.end})`}")
+  #app
+    .background-color(
+      v-for="color in selectedColors"
+      :key="'c-'+Math.floor(Math.random() * 10000)"
+      :style="{'background-image': `radial-gradient(${color.start}, ${color.end})`}"
+    )
     router-view(
       :selecte-colors="selectedColors"
       :prop-number="propNumber"
@@ -17,7 +22,7 @@ export default {
   data: () => ({
     loading: false,
     propNumber: 0,
-    colorNumber: 0,
+    selectedColors: [],
     colors: [
       {
         start: '#ffab1d',
@@ -61,14 +66,35 @@ export default {
       this.loading = true
     }, 1500)
   },
-  computed: {
-    selectedColors() {
-      return this.colors[this.colorNumber]
+  watch: {
+    $route() {
+      this.randomNumbers()
     }
+  },
+  updated() {
+    console.log('updated')
   },
   methods: {
     randomNumbers() {
-      this.colorNumber = Math.floor(Math.random() * this.colors.length)
+      const newColorNumber = Math.floor(Math.random() * this.colors.length)
+
+      const newColorsArr = []
+      let newColor = this.colors[newColorNumber]
+
+      if (this.selectedColors.length > 1) {
+        newColor = this.colors[newColorNumber]
+        while (newColor.start === this.selectedColors[0].start) {
+          newColor = this.colors[Math.floor(Math.random() * this.colors.length)]
+        }
+        newColorsArr.push(newColor)
+        newColorsArr.push(this.selectedColors[0])
+      } else {
+        newColorsArr.push(newColor)
+        newColorsArr.push(newColor)
+      }
+
+      this.selectedColors = newColorsArr
+
       this.propNumber = Math.floor(Math.random() * this.colors.length) + 1
     }
   }
@@ -90,6 +116,11 @@ html, body
   flex-grow: 1
   display: flex
   flex-direction: column
+  transition: background-image 1s ease-in-out
+  -webkit-transition: background-image 1s ease-in-out
+  & > :nth-child(2)
+    animation: fade-out 1s ease-out forwards
+
 
 
 *
@@ -98,6 +129,13 @@ html, body
   line-height: 1em
   margin: 0
   font-weight: 500
+
+.background-color
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
 
 .contador
   flex-grow: 1
@@ -232,6 +270,12 @@ html, body
   100%
     opacity: 1
     transform: translate(0,0)
+
+@keyframes fade-out
+  0%
+    opacity: 1
+  100%
+    opacity: 0
 
 @keyframes ala-izq-animation
   0%, 100%

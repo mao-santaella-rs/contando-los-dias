@@ -16,6 +16,7 @@ export default {
 <style lang="sass" scoped>
 .footer
   padding: 10px 0
+  position: relative
 
 .footer__header
   text-align: center
