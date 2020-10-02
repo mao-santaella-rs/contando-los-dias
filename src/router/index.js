@@ -17,6 +17,12 @@ const routes = [
       import(/* webpackChunkName: "conocernos" */ '../views/Conocernos.vue')
   },
   {
+    path: '/juntos',
+    name: 'juntos',
+    component: () =>
+      import(/* webpackChunkName: "juntos" */ '../views/Juntos.vue')
+  },
+  {
     path: '/para-vernos',
     name: 'vernos',
     component: () =>

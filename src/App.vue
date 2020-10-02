@@ -71,9 +71,6 @@ export default {
       this.randomNumbers()
     }
   },
-  updated() {
-    console.log('updated')
-  },
   methods: {
     randomNumbers() {
       const newColorNumber = Math.floor(Math.random() * this.colors.length)

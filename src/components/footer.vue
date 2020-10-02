@@ -3,8 +3,9 @@
     .footer__header
       span Contando los dias
     .footer__links
-      router-link(:to="{name:'conocernos'}") /de Encontrarnos
-      router-link(:to="{name:'vernos'}") /para Verte
+      router-link(:to="{name:'conocernos'}") de Encontrarnos
+      router-link(:to="{name:'juntos'}") Juntos
+      router-link(:to="{name:'vernos'}") Para Verte
 </template>
 
 <script>
@@ -17,6 +18,9 @@ export default {
 .footer
   padding: 10px 0
   position: relative
+  display: flex
+  flex-direction: column
+  align-items: center
 
 .footer__header
   text-align: center
@@ -24,6 +28,8 @@ export default {
 
 .footer__links
   display: flex
+  width: 100%
+  max-width: 400px
   justify-content: space-around
 
   a
