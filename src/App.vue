@@ -8,7 +8,6 @@
     router-view(
       :selecte-colors="selectedColors"
       :prop-number="propNumber"
-      :loading="loading"
     )
     Footer
 
@@ -20,7 +19,6 @@ export default {
   name: 'App',
   components: { Footer },
   data: () => ({
-    loading: false,
     propNumber: 0,
     selectedColors: [],
     colors: [
@@ -33,8 +31,8 @@ export default {
         end: '#149e8e'
       },
       {
-        start: '#f86b64',
-        end: '#fa5293'
+        start: '#ffedbc',
+        end: '#ed4264 '
       },
       {
         start: '#ff3b57',
@@ -55,20 +53,19 @@ export default {
       {
         start: '#2dc8ed',
         end: '#548af0'
+      },
+      {
+        start: '#a8e063',
+        end: '#56ab2f '
       }
     ]
   }),
   created() {
     this.randomNumbers()
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = true
-    }, 1500)
-  },
   watch: {
-    $route() {
-      this.randomNumbers()
+    $route(to, from) {
+      if (to.name != from.name) this.randomNumbers()
     }
   },
   methods: {
@@ -118,8 +115,6 @@ html, body
   & > :nth-child(2)
     animation: fade-out 1s ease-out forwards
 
-
-
 *
   font-family: 'Lobster', cursive
   color: white
@@ -141,10 +136,12 @@ html, body
   align-items: center
 
 .main-container
-  padding: 50px 0
+  position: relative
+  padding: 50px 0 20px 0
   width: 90%
   max-width: 900px
   opacity: 0
+  animation: fade-in 0.5s ease-out forwards 0.5s
 
 .fade-in
   animation: fade-in 0.5s ease-out forwards
@@ -192,7 +189,7 @@ html, body
   transform: translate(-50%,-50%)
 
   h1
-    font-size: 22em
+    font-size: 20em
     line-height: 1em
     text-shadow: 1px 1px 1px #b3b3b3, 1px 2px 1px #b3b3b3, 1px 3px 1px #b3b3b3, 1px 4px 1px #b3b3b3, 1px 5px 1px #b3b3b3, 1px 6px 1px #b3b3b3, 1px 7px 1px #b3b3b3, 1px 8px 1px #b3b3b3, 1px 9px 1px #b3b3b3, 1px 10px 1px #b3b3b3, 1px 11px 1px #b3b3b3, 1px 12px 1px #b3b3b3, 1px 13px 1px #b3b3b3, 1px 14px 1px #b3b3b3, 1px 15px 1px #b3b3b3,1px 18px 6px rgba(16,16,16,0.2),1px 22px 10px rgba(16,16,16,0.2),1px 25px 35px rgba(16,16,16,0.2),1px 30px 60px rgba(16,16,16,0.4)
 

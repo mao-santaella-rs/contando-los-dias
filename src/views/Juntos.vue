@@ -1,6 +1,6 @@
 <template lang="pug">
   .contador
-    .main-container(v-if="days" :class="{'fade-in':loading}")
+    .main-container(v-if="days")
       .days__container
         .shield__container
           .hearts
@@ -45,10 +45,6 @@ export default {
     propNumber: {
       type: Number,
       default: 0
-    },
-    loading: {
-      type: Boolean,
-      default: false
     }
   },
   mixins: [mixins],
@@ -93,8 +89,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-container
-  padding-bottom: 20px
 .shield
   width: 55%
   filter: drop-shadow(5px 10px 5px rgba(0,0,0,.2))
@@ -106,14 +100,21 @@ export default {
     font-size: 16em
 
 .hearts
-  width: 55%
-  height: 200px
+  width: 50%
+  height: 250px
   position: absolute
   bottom: 80%
 
   span
     color: white
 
+@media screen and (max-width: 750px)
+  .hearts
+    width: 65%
+
+@media screen and (max-width: 450px)
+  .hearts
+    width: 75%
 
 $delay: 0s
 @for $i from 0 through 20
@@ -121,7 +122,7 @@ $delay: 0s
     margin-left: 5% * $i
     position: absolute
     opacity: 0
-    width: 10px + random(20)
+    width: 15px + random(20)
     animation-name: animateBubble + random(10), sideWays + random(10)
     animation-duration: 3s + .1s * random(10), 1s + .1s * random(10)
     animation-timing-function: ease-in, ease-in-out
@@ -135,12 +136,12 @@ $delay: 0s
       0%
         left: 0
       100%
-        left: 10% + 1% * $i
+        left: 1% * $i
 
   @keyframes animateBubble#{$i}
     0%
       opacity: .7
-      bottom: -20%
+      bottom: 0%
     100%
       opacity: 0
       bottom: 50% + 5% * $i

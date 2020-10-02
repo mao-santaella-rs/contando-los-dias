@@ -1,6 +1,6 @@
 <template lang="pug">
   .contador
-    .main-container(v-if="days" :class="{'fade-in':loading}")
+    .main-container(v-if="days")
       .days__container
         .shield__container
           .shield
@@ -42,10 +42,6 @@ export default {
     propNumber: {
       type: Number,
       default: 0
-    },
-    loading: {
-      type: Boolean,
-      default: false
     }
   },
   mixins: [mixins],
@@ -94,7 +90,7 @@ export default {
   filter: drop-shadow(5px 10px 5px rgba(0,0,0,.2))
 
 .days
-  top: 45%
+  top: 43%
   h1
     font-size: 16em
 
@@ -106,6 +102,7 @@ export default {
 
 @media screen and (max-width: 450px)
   .shield
+    width: 75%
     filter: drop-shadow(5px 5px 5px rgba(0,0,0,.2))
   .days
     h1

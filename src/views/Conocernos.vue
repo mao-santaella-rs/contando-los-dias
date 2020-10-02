@@ -1,6 +1,6 @@
 <template lang="pug">
   .contador
-    .main-container(v-if="days" :class="{'fade-in':loading}")
+    .main-container(v-if="days")
       .days__container
         .wings__container
           .wing.wing--left
@@ -47,10 +47,6 @@ export default {
     propNumber: {
       type: Number,
       default: 0
-    },
-    loading: {
-      type: Boolean,
-      default: false
     }
   },
   mixins: [mixins],
