@@ -36,6 +36,10 @@ export default {
         end: '#ed4264 '
       },
       {
+        start: '#f86b64',
+        end: '#fa5293 '
+      },
+      {
         start: '#ff3b57',
         end: '#892168'
       },
