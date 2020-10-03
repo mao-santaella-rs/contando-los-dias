@@ -59,7 +59,12 @@ export default {
       'Desde que eres mi mujer',
       'Desde que soy tu hombre',
       'Desde el día que me dijiste sí quiero',
-      'Desde el día que no quiero soltar tu mano'
+      'Desde el día que no quiero soltar tu mano',
+      'Desde que entramos en la aventura más emocionante de mi vida',
+      'Desde que mis ojos brillan cuando te ven',
+      'Desde que nuestras almas se tomaron de las manos para nunca soltarse',
+      'Desde que me siento la persona más afortunada de la tierra',
+      'Desde que siento que puedo conquistar el mundo a tu lado'
     ]
   }),
   created() {

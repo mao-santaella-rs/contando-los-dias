@@ -67,7 +67,8 @@ export default {
       'Desde que me iluminas la vida',
       'Desde que mi vida se ve de colores',
       'Desde que tengo el privilegio de conocer a la mujer de mi vida',
-      'Desde que nuestros corazones se agarraron de la mano'
+      'Desde que nuestros corazones se agarraron de la mano',
+      'Desde que sonrio sin ninguna razón aparente'
     ]
   }),
   created() {

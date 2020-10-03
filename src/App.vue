@@ -1,15 +1,16 @@
 <template lang="pug">
   #app
-    .background-color(
-      v-for="color in selectedColors"
-      :key="'c-'+Math.floor(Math.random() * 10000)"
-      :style="{'background-image': `radial-gradient(${color.start}, ${color.end})`}"
-    )
-    router-view(
-      :selecte-colors="selectedColors"
-      :prop-number="propNumber"
-    )
-    Footer
+    .app-container
+      .background-color(
+        v-for="color in selectedColors"
+        :key="'c-'+Math.floor(Math.random() * 10000)"
+        :style="{'background-image': `radial-gradient(${color.start}, ${color.end})`}"
+      )
+      router-view(
+        :selecte-colors="selectedColors"
+        :prop-number="propNumber"
+      )
+      Footer
 
 </template>
 
@@ -99,19 +100,24 @@ export default {
 @import './assets/normalize.css'
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap')
 
-html
+html, #app
+  position: relative
+  width: 100%
   min-height: 100%
 
 html, body
   display: flex
   flex-grow: 1
 
-#app
+
+
+.app-container
   flex-grow: 1
   display: flex
   flex-direction: column
   transition: background-image 1s ease-in-out
   -webkit-transition: background-image 1s ease-in-out
+  height: 100%
   & > :nth-child(2)
     animation: fade-out 1s ease-out forwards
 
