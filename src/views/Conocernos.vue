@@ -9,7 +9,7 @@
             img(src="../assets/ala-der.svg")
         .shield__container
           .shield
-            img(:src="`shields/escudo-0${propNumber}.svg`")
+            img(:src="`shields/escudo-${propNumber < 9 ? '0'+propNumber : propNumber }.svg`")
           .days
             h1 {{days.toLocaleString()}}
 

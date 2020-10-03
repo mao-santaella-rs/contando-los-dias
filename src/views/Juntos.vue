@@ -7,7 +7,7 @@
             div(v-for="(heart, index) in 20" :class="`heart-${index}`")
               img(:src="`shields/heart.svg`")
           .shield
-            img(:src="`shields/heart-0${propNumber}.svg`")
+            img(:src="`shields/heart-${propNumber < 9 ? '0'+propNumber : propNumber }.svg`")
           .days
             h1 {{days.toLocaleString()}}
 

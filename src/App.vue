@@ -70,7 +70,7 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.name != from.name) this.randomNumbers()
+      if (from.name && to.name != from.name) this.randomNumbers()
     }
   },
   methods: {
@@ -95,6 +95,7 @@ export default {
       this.selectedColors = newColorsArr
 
       this.propNumber = Math.floor(Math.random() * this.colors.length) + 1
+      console.log(this.propNumber)
     }
   }
 }
