@@ -7,10 +7,22 @@
         :style="{'background-image': `radial-gradient(${color.start}, ${color.end})`}"
       )
       router-view(
-        :selecte-colors="selectedColors"
         :prop-number="propNumber"
+        :delay="delay"
+        @new-numbers="randomNumbers"
       )
       Footer
+
+
+    .images-loader
+      .image-test(
+        v-for="(img,index) in colors" 
+        :key="'img-test-'+index"
+      )
+        img(src="./assets/ala-izq.svg")
+        img(src="./assets/ala-der.svg")
+        img(:src="`shields/escudo-${index +1 < 10 ? '0'+(index +1) : index +1 }.svg`")
+        img(:src="`shields/heart-${index +1 < 10 ? '0'+(index +1) : index +1 }.svg`")
 
 </template>
 
@@ -63,7 +75,8 @@ export default {
         start: '#a8e063',
         end: '#56ab2f '
       }
-    ]
+    ],
+    delay: true
   }),
   created() {
     this.randomNumbers()
@@ -87,6 +100,7 @@ export default {
         }
         newColorsArr.push(newColor)
         newColorsArr.push(this.selectedColors[0])
+        this.delay = false
       } else {
         newColorsArr.push(newColor)
         newColorsArr.push(newColor)
@@ -95,7 +109,6 @@ export default {
       this.selectedColors = newColorsArr
 
       this.propNumber = Math.floor(Math.random() * this.colors.length) + 1
-      console.log(this.propNumber)
     }
   }
 }
@@ -152,7 +165,10 @@ html, body
   width: 90%
   max-width: 900px
   opacity: 0
-  animation: fade-in 0.5s ease-out forwards 0.5s
+  animation: fade-in 0.5s ease-out forwards
+
+.dealy
+  animation-delay: 0.5s
 
 .fade-in
   animation: fade-in 0.5s ease-out forwards
@@ -161,6 +177,7 @@ html, body
 .days__container
   position: relative
   margin-bottom: 15px
+  cursor: pointer
 
 .shield__container
   display: flex
@@ -231,6 +248,18 @@ html, body
   h3
     text-align: center
     text-shadow: 2px 2px 2px rgba(0,0,0,0.2)
+
+
+.images-loader
+  position: fixed
+  top: 0
+  pointer-events: none
+  opacity: 0
+
+  img
+    width: 5px
+    display: block
+
 
 @media screen and (max-width: 900px)
   .shield

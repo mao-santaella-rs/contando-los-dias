@@ -1,7 +1,7 @@
 <template lang="pug">
   .contador
-    .main-container(v-if="days")
-      .days__container
+    .main-container(v-if="days" :class="{delay: delay}")
+      .days__container(@click="shieldClick")
         .wings__container
           .wing.wing--left
             img(src="../assets/ala-izq.svg")
@@ -9,7 +9,7 @@
             img(src="../assets/ala-der.svg")
         .shield__container
           .shield
-            img(:src="`shields/escudo-${propNumber < 9 ? '0'+propNumber : propNumber }.svg`")
+            img(:src="`shields/escudo-${propNumber < 10 ? '0'+propNumber : propNumber }.svg`")
           .days
             h1 {{days.toLocaleString()}}
 
@@ -31,7 +31,7 @@
             h3 Segundos
 
       .text
-        h1 {{selectedPhrase}}
+        h1 {{phrases[phraseNumber]}}
 
 </template>
 
@@ -40,10 +40,6 @@ import mixins from '../mixins/mixins'
 export default {
   name: 'DeConocernos',
   props: {
-    selectedColors: {
-      type: Object,
-      default: () => ({})
-    },
     propNumber: {
       type: Number,
       default: 0
@@ -69,19 +65,14 @@ export default {
       'Desde que tengo el privilegio de conocer a la mujer de mi vida',
       'Desde que nuestros corazones se agarraron de la mano',
       'Desde que sonrio sin ninguna razón aparente'
-    ]
+    ],
+    phraseNumber: 0
   }),
   created() {
     this.timeOut = setInterval(this.updateDateTime, 1000)
   },
   beforeDestroy() {
     clearInterval(this.timeOut)
-  },
-  computed: {
-    selectedPhrase() {
-      const randomNum = Math.floor(Math.random() * this.phrases.length)
-      return this.phrases[randomNum]
-    }
   },
   methods: {
     updateDateTime() {
@@ -92,6 +83,13 @@ export default {
       this.hours = timeCalculated.hours
       this.minutes = timeCalculated.minutes
       this.seconds = timeCalculated.seconds
+    },
+    phraseNumberRandomizer() {
+      this.phraseNumber = Math.floor(Math.random() * this.phrases.length)
+    },
+    shieldClick() {
+      this.$emit('new-numbers')
+      this.phraseNumberRandomizer()
     }
   }
 }

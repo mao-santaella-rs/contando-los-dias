@@ -1,13 +1,13 @@
 <template lang="pug">
   .contador
-    .main-container(v-if="days")
-      .days__container
+    .main-container(v-if="days" :class="{delay: delay}")
+      .days__container(@click="shieldClick")
         .shield__container
           .hearts
-            div(v-for="(heart, index) in 20" :class="`heart-${index}`")
+            div(v-for="(heart, index) in 20" :key="`heart-${index}`" :class="`heart-${index}`")
               img(:src="`shields/heart.svg`")
           .shield
-            img(:src="`shields/heart-${propNumber < 9 ? '0'+propNumber : propNumber }.svg`")
+            img(:src="`shields/heart-${propNumber < 10 ? '0'+propNumber : propNumber }.svg`")
           .days
             h1 {{days.toLocaleString()}}
 
@@ -29,7 +29,7 @@
             h3 Segundos
 
       .text
-        h1 {{selectedPhrase}}
+        h1 {{phrases[phraseNumber]}}
 
 </template>
 
@@ -38,13 +38,12 @@ import mixins from '../mixins/mixins'
 export default {
   name: 'Juntos',
   props: {
-    selectedColors: {
-      type: Object,
-      default: () => ({})
-    },
     propNumber: {
       type: Number,
       default: 0
+    },
+    delay: {
+      type: Boolean
     }
   },
   mixins: [mixins],
@@ -65,19 +64,15 @@ export default {
       'Desde que nuestras almas se tomaron de las manos para nunca soltarse',
       'Desde que me siento la persona más afortunada de la tierra',
       'Desde que siento que puedo conquistar el mundo a tu lado'
-    ]
+    ],
+    phraseNumber: 0
   }),
   created() {
     this.timeOut = setInterval(this.updateDateTime, 1000)
+    this.phraseNumberRandomizer()
   },
   beforeDestroy() {
     clearInterval(this.timeOut)
-  },
-  computed: {
-    selectedPhrase() {
-      const randomNum = Math.floor(Math.random() * this.phrases.length)
-      return this.phrases[randomNum]
-    }
   },
   methods: {
     updateDateTime() {
@@ -88,6 +83,13 @@ export default {
       this.hours = timeCalculated.hours
       this.minutes = timeCalculated.minutes
       this.seconds = timeCalculated.seconds
+    },
+    phraseNumberRandomizer() {
+      this.phraseNumber = Math.floor(Math.random() * this.phrases.length)
+    },
+    shieldClick() {
+      this.$emit('new-numbers')
+      this.phraseNumberRandomizer()
     }
   }
 }
@@ -150,12 +152,6 @@ $delay: 0s
     100%
       opacity: 0
       bottom: 50% + 5% * $i
-
-
-
-
-
-
 
 @media screen and (max-width: 750px)
   .shield
