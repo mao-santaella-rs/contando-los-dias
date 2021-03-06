@@ -7,32 +7,32 @@ const routes = [
   {
     path: '/',
     redirect: {
-      name: 'conocernos'
-    }
+      name: 'conocernos',
+    },
   },
   {
     path: '/de-conocernos',
     name: 'conocernos',
     component: () =>
-      import(/* webpackChunkName: "conocernos" */ '../views/Conocernos.vue')
+      import(/* webpackChunkName: "conocernos" */ '../views/Conocernos.vue'),
   },
   {
     path: '/juntos',
     name: 'juntos',
     component: () =>
-      import(/* webpackChunkName: "juntos" */ '../views/Juntos.vue')
+      import(/* webpackChunkName: "juntos" */ '../views/Juntos.vue'),
   },
   {
     path: '/para-vernos',
     name: 'vernos',
     component: () =>
-      import(/* webpackChunkName: "vernos" */ '../views/Vernos.vue')
-  }
+      import(/* webpackChunkName: "vernos" */ '../views/Vernos.vue'),
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
 })
 
 export default router

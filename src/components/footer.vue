@@ -5,12 +5,17 @@
     .footer__links
       router-link(:to="{name:'conocernos'}") de Encontrarnos
       router-link(:to="{name:'juntos'}") Juntos
-      router-link(:to="{name:'vernos'}") Para Verte
+      router-link( v-if="showVernos" :to="{name:'vernos'}") Para Verte
 </template>
 
 <script>
 export default {
-  name: 'footer'
+  name: 'Footer',
+  computed: {
+    showVernos() {
+      return new Date(2021, 3, 17, 8, 0, 0, 0) >= new Date()
+    },
+  },
 }
 </script>
 

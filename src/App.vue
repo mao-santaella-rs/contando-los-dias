@@ -37,54 +37,54 @@ export default {
     colors: [
       {
         start: '#ffab1d',
-        end: '#f8501c'
+        end: '#f8501c',
       },
       {
         start: '#42df90',
-        end: '#149e8e'
+        end: '#149e8e',
       },
       {
         start: '#ffedbc',
-        end: '#ed4264 '
+        end: '#ed4264 ',
       },
       {
         start: '#f86b64',
-        end: '#fa5293 '
+        end: '#fa5293 ',
       },
       {
         start: '#ff3b57',
-        end: '#892168'
+        end: '#892168',
       },
       {
         start: '#888bf4',
-        end: '#5151c6'
+        end: '#5151c6',
       },
       {
         start: '#42ffdb',
-        end: '#00c9c9'
+        end: '#00c9c9',
       },
       {
         start: '#f573c3',
-        end: '#c13dff'
+        end: '#c13dff',
       },
       {
         start: '#2dc8ed',
-        end: '#548af0'
+        end: '#548af0',
       },
       {
         start: '#a8e063',
-        end: '#56ab2f '
-      }
+        end: '#56ab2f ',
+      },
     ],
-    delay: true
+    delay: true,
   }),
-  created() {
-    this.randomNumbers()
-  },
   watch: {
     $route(to, from) {
       if (from.name && to.name != from.name) this.randomNumbers()
-    }
+    },
+  },
+  created() {
+    this.randomNumbers()
   },
   methods: {
     randomNumbers() {
@@ -109,8 +109,8 @@ export default {
       this.selectedColors = newColorsArr
 
       this.propNumber = Math.floor(Math.random() * this.colors.length) + 1
-    }
-  }
+    },
+  },
 }
 </script>
 

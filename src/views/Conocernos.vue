@@ -39,13 +39,13 @@
 import mixins from '../mixins/mixins'
 export default {
   name: 'DeConocernos',
+  mixins: [mixins],
   props: {
     propNumber: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
-  mixins: [mixins],
   data: () => ({
     timeOut: null,
     days: 0,
@@ -64,9 +64,9 @@ export default {
       'Desde que mi vida se ve de colores',
       'Desde que tengo el privilegio de conocer a la mujer de mi vida',
       'Desde que nuestros corazones se agarraron de la mano',
-      'Desde que sonrio sin ninguna razón aparente'
+      'Desde que sonrio sin ninguna razón aparente',
     ],
-    phraseNumber: 0
+    phraseNumber: 0,
   }),
   created() {
     this.timeOut = setInterval(this.updateDateTime, 1000)
@@ -90,8 +90,8 @@ export default {
     shieldClick() {
       this.$emit('new-numbers')
       this.phraseNumberRandomizer()
-    }
-  }
+    },
+  },
 }
 </script>
 

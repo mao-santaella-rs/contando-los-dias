@@ -37,16 +37,16 @@
 import mixins from '../mixins/mixins'
 export default {
   name: 'Juntos',
+  mixins: [mixins],
   props: {
     propNumber: {
       type: Number,
-      default: 0
+      default: 0,
     },
     delay: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
-  mixins: [mixins],
   data: () => ({
     timeOut: null,
     days: 0,
@@ -63,9 +63,9 @@ export default {
       'Desde que mis ojos brillan cuando te ven',
       'Desde que nuestras almas se tomaron de las manos para nunca soltarse',
       'Desde que me siento la persona más afortunada de la tierra',
-      'Desde que siento que puedo conquistar el mundo a tu lado'
+      'Desde que siento que puedo conquistar el mundo a tu lado',
     ],
-    phraseNumber: 0
+    phraseNumber: 0,
   }),
   created() {
     this.timeOut = setInterval(this.updateDateTime, 1000)
@@ -90,8 +90,8 @@ export default {
     shieldClick() {
       this.$emit('new-numbers')
       this.phraseNumberRandomizer()
-    }
-  }
+    },
+  },
 }
 </script>
 

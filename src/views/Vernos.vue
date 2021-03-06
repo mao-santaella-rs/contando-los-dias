@@ -34,17 +34,17 @@
 import mixins from '../mixins/mixins'
 export default {
   name: 'ParaVernos',
+  mixins: [mixins],
   props: {
     selectedColors: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     propNumber: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
-  mixins: [mixins],
   data: () => ({
     timeOut: null,
     days: 0,
@@ -52,36 +52,36 @@ export default {
     minutes: 0,
     seconds: 0,
     phrases: [
-      'Para por fin verte a los ojos',
-      'Para ver el exacto color de tus ojos',
-      'Para conocer tu aroma',
-      'Para sentir tus labios',
-      'Para sentir tu piel'
-    ]
+      'Para volver a besarte',
+      'Para hacerte el amor de nuevo',
+      'Para acariciarte en las noches',
+      'Para agarrarte de la mano',
+      'Para besarte de nuevo',
+    ],
   }),
+  computed: {
+    selectedPhrase() {
+      const randomNum = Math.floor(Math.random() * this.phrases.length)
+      return this.phrases[randomNum]
+    },
+  },
   created() {
     this.timeOut = setInterval(this.updateDateTime, 1000)
   },
   beforeDestroy() {
     clearInterval(this.timeOut)
   },
-  computed: {
-    selectedPhrase() {
-      const randomNum = Math.floor(Math.random() * this.phrases.length)
-      return this.phrases[randomNum]
-    }
-  },
   methods: {
     updateDateTime() {
       const now = new Date()
-      const firstDate = new Date(2020, 11, 2, 18, 0, 0)
+      const firstDate = new Date(2021, 3, 17, 8, 0, 0)
       const timeCalculated = this.timeCalculation(firstDate, now)
       this.days = timeCalculated.days
       this.hours = timeCalculated.hours
       this.minutes = timeCalculated.minutes
       this.seconds = timeCalculated.seconds
-    }
-  }
+    },
+  },
 }
 </script>
 
