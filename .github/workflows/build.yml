@@ -41,6 +41,7 @@ jobs:
           git commit -m "new dist"
           git push -u origin new-dist
           git push origin `git subtree split --prefix dist new-dist`:gh-pages --force
+          git push origin --delete new-dist
 
 
 
