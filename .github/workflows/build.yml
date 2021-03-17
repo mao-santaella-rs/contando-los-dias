@@ -39,5 +39,5 @@ jobs:
           git checkout -b new-dist
           git add --force dist
           git commit -m "new dist"
-          git push
+          git push -u origin new-dist
           git subtree push --prefix dist origin gh-pages
