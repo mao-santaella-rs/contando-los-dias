@@ -40,4 +40,8 @@ jobs:
           git add --force dist
           git commit -m "new dist"
           git push -u origin new-dist
-          git subtree push --prefix dist origin gh-pages
+          git push origin `git subtree split --prefix dist new-dist`:gh-pages --force
+
+
+
+# git subtree push --prefix dist origin gh-pages
