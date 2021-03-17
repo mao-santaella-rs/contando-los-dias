@@ -36,8 +36,7 @@ jobs:
       - run: |
           git config user.name maoSantaella
           git config user.email mao.santaella@gmail.com
-          git reset --hard HEAD
-          git pull
+          git fetch --force
           git checkout -b new-dist
           git add --force dist
           git commit -m "new dist"
