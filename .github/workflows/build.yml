@@ -41,7 +41,7 @@ jobs:
           git config user.name maoSantaella
           git config user.email mao.santaella@gmail.com
           git checkout -b nuevo-dist
-          git add dist/\*
+          git add --force dist
           git commit -m "new dist"
           git subtree push --prefix dist origin gh-pages
           git branch -D nuevo-dist
